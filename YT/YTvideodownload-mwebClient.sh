@@ -9,7 +9,7 @@ while true; do
         if [[ ${#SelectFormats} -gt 0 ]]; then
             # List formats and ask user to select
             printf "\e[31;1mAvailable formats, DO NOT USE AV### ENCODINGS:\e[0m\n"
-            yt-dlp --ffmpeg-location ~/ffmpeg2 --no-warnings --no-check-certificate --list-formats --extractor-args "youtube:player-client=default,mweb" "${VideoURL}"
+            yt-dlp --ffmpeg-location ~/ffmpeg2 --no-warnings --no-check-certificate --list-formats --extractor-args "youtube:rustypipe_bg_pot_cache=1;player-client=default,mweb" "${VideoURL}"
             printf "\e[31;1mChoose two IDs with formats from above, one 'video only' and one 'audio only', for instance 614 and 140 (these are just examples, allways check above first!)\e[0m\n"
             read -p "Enter the Video and Audio IDs to be merged as; VideoID+AudioID (e.g. 614+140): " OutputQuality
             VideoQuality2="${OutputQuality}"
@@ -30,7 +30,7 @@ while true; do
             OutputName="${OutputName}"
         fi
         # start yt-dlp with the previous options
-        yt-dlp --ffmpeg-location ~/ffmpeg2 --no-check-certificate -f "${VideoQuality2}" -o ${OutputName} --recode-video mp4 --extractor-args "youtube:player-client=default,mweb" "${VideoURL}"
+        yt-dlp --ffmpeg-location ~/ffmpeg2 --no-check-certificate -f "${VideoQuality2}" -o ${OutputName} --recode-video mp4 --ppa 'VideoConvertor+ffmpeg: -c:v h264 -c:a aac' --extractor-args 'youtube:rustypipe_bg_pot_cache=1;player-client=default,mweb' -v "${VideoURL}"
         # yt-dlp --ffmpeg-location ~/ffmpeg2 --no-check-certificate --cookies-from-browser chrome -f "bestvideo[vcodec!*=av01]+bestaudio[acodec=opus]/best[vcodec!*=av01]" --recode-video mp4 "https://www.youtube.com/watch?v=4sZuN0xXWLc"
         # Using ffmpeg to make a Quicktime Player readable version/format (obsolete, but kept for reference)
 
