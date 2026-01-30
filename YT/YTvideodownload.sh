@@ -30,7 +30,7 @@ while true; do
             OutputName="${OutputName}"
         fi
         # start yt-dlp with the previous options
-        yt-dlp --ffmpeg-location ~/ffmpeg2 --no-check-certificate -f "${VideoQuality2}" -o ${OutputName} --recode-video mp4 "${VideoURL}"
+        yt-dlp --ffmpeg-location ~/ffmpeg2 --no-check-certificate -f "${VideoQuality2}" -o ${OutputName} --recode-video mp4 --ppa 'VideoConvertor+ffmpeg: -c:v h264 -c:a aac' "${VideoURL}"
         # yt-dlp --ffmpeg-location ~/ffmpeg2 --no-check-certificate --cookies-from-browser chrome -f "bestvideo[vcodec!*=av01]+bestaudio[acodec=opus]/best[vcodec!*=av01]" --recode-video mp4 "https://www.youtube.com/watch?v=4sZuN0xXWLc"
         # Using ffmpeg to make a Quicktime Player readable version/format (obsolete, but kept for reference)
 
